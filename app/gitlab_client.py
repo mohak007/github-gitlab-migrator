@@ -25,4 +25,9 @@ class GitLabClient:
 
         print(f"Creating GitLab repository '{repo_name}'...")
 
-        return self.client.projects.create({"name": repo_name, "visibility": "private"})
+        return self.client.projects.create(
+            {
+                "name": repo_name,
+                "visibility": "private",
+            }
+        )

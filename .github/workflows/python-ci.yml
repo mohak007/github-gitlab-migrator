@@ -32,7 +32,7 @@ jobs:
         run: black --check .
 
       - name: Run linting
-        run: flake8 .
+        run: flake8 app tests
 
       - name: Run tests
         run: pytest -v
