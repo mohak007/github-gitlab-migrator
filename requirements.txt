@@ -4,3 +4,6 @@ python-gitlab
 GitPython
 rich
 typer
+pytest
+black
+flake8

@@ -1,8 +1,54 @@
+# Virtual Environment
 venv/
-__pycache__/
-*.pyc
+.venv/
+
+# Environment Variables
 .env
-.idea/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+
+# Build Files
+build/
+dist/
+*.egg-info/
+
+# IDE
 .vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
 *.log
+
+# Migrated repositories
 HTML/
+test-repo/
+AI-Driven_DevSecops_Pipeline/
+AWS-Projects/
+Covert_communication_on_IPFS_using_Filecoin_slate_blockchain/
+Devops-Learning/
+Programming-with-C/
+TrackingusingBlockchain/
+TuteDude/
+Vulnubmachine/
+adrian-github-list_and_strings/
+adriann-Elemenemtary-Programs/
+automating-malware-analysis/
+broadcasting-crypto-stenography-on-the-filecoin-blockchain-storage/
+code-quality-project/
+cpprestsdk_kali_linux/
+devsecops-app/
+docker-compose-pipeline/
+docker-node-app/
+docker-node-redis-app/
+gitForJenkins/
+git_commands/
+nginx-CI-CD-Flow/
+nginx-notes-k8s/
+battery_monitor.bat
+github-gitlab-migrator/
