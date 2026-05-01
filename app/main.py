@@ -7,10 +7,7 @@ def normalize_repo_name(repo_input: str) -> str:
     repo_input = repo_input.strip()
 
     if repo_input.startswith("https://github.com/"):
-        repo_input = repo_input.replace(
-            "https://github.com/",
-            ""
-        )
+        repo_input = repo_input.replace("https://github.com/", "")
 
     if repo_input.endswith(".git"):
         repo_input = repo_input[:-4]
@@ -23,9 +20,7 @@ def migrate_single_repo():
     gitlab_client = GitLabClient()
     migrator = RepositoryMigrator()
 
-    repo_input = input(
-        "Enter GitHub repository (URL or owner/repo): "
-    )
+    repo_input = input("Enter GitHub repository (URL or owner/repo): ")
 
     repo_name = normalize_repo_name(repo_input)
 
@@ -33,14 +28,9 @@ def migrate_single_repo():
 
     print(f"Found GitHub repository: {github_repo.full_name}")
 
-    gitlab_project = gitlab_client.create_repository(
-        github_repo.name
-    )
+    gitlab_project = gitlab_client.create_repository(github_repo.name)
 
-    migrator.migrate(
-        github_repo.clone_url,
-        gitlab_project.http_url_to_repo
-    )
+    migrator.migrate(github_repo.clone_url, gitlab_project.http_url_to_repo)
 
 
 def migrate_all_repositories():
@@ -57,14 +47,9 @@ def migrate_all_repositories():
         try:
             print(f"\nMigrating: {repo.full_name}")
 
-            gitlab_project = gitlab_client.create_repository(
-                repo.name
-            )
+            gitlab_project = gitlab_client.create_repository(repo.name)
 
-            migrator.migrate(
-                repo.clone_url,
-                gitlab_project.http_url_to_repo
-            )
+            migrator.migrate(repo.clone_url, gitlab_project.http_url_to_repo)
 
             migrated += 1
 

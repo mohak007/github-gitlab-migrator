@@ -5,10 +5,7 @@ from app.config import GITLAB_TOKEN, GITLAB_URL
 
 class GitLabClient:
     def __init__(self):
-        self.client = gitlab.Gitlab(
-            url=GITLAB_URL,
-            private_token=GITLAB_TOKEN
-        )
+        self.client = gitlab.Gitlab(url=GITLAB_URL, private_token=GITLAB_TOKEN)
         self.client.auth()
         self.username = self.client.user.username
 
@@ -28,7 +25,4 @@ class GitLabClient:
 
         print(f"Creating GitLab repository '{repo_name}'...")
 
-        return self.client.projects.create({
-            "name": repo_name,
-            "visibility": "private"
-        })
+        return self.client.projects.create({"name": repo_name, "visibility": "private"})

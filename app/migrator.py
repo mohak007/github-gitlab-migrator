@@ -15,8 +15,7 @@ class RepositoryMigrator:
         repo = Repo.clone_from(github_url, repo_name)
 
         authenticated_url = gitlab_url.replace(
-            "https://",
-            f"https://oauth2:{GITLAB_TOKEN}@"
+            "https://", f"https://oauth2:{GITLAB_TOKEN}@"
         )
 
         print("Adding GitLab remote...")
@@ -24,23 +23,14 @@ class RepositoryMigrator:
         if "gitlab" in [remote.name for remote in repo.remotes]:
             repo.delete_remote("gitlab")
 
-        gitlab_remote = repo.create_remote(
-            "gitlab",
-            authenticated_url
-        )
+        gitlab_remote = repo.create_remote("gitlab", authenticated_url)
 
         try:
             print("Pushing branches...")
-            gitlab_remote.push(
-                refspec="refs/heads/*:refs/heads/*",
-                force=True
-            )
+            gitlab_remote.push(refspec="refs/heads/*:refs/heads/*", force=True)
 
             print("Pushing tags...")
-            gitlab_remote.push(
-                refspec="refs/tags/*:refs/tags/*",
-                force=True
-            )
+            gitlab_remote.push(refspec="refs/tags/*:refs/tags/*", force=True)
 
             print("Migration completed successfully!")
 
