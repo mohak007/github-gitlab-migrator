@@ -1,18 +1,7 @@
 from app.github_client import GitHubClient
 from app.gitlab_client import GitLabClient
 from app.migrator import RepositoryMigrator
-
-
-def normalize_repo_name(repo_input: str) -> str:
-    repo_input = repo_input.strip()
-
-    if repo_input.startswith("https://github.com/"):
-        repo_input = repo_input.replace("https://github.com/", "")
-
-    if repo_input.endswith(".git"):
-        repo_input = repo_input[:-4]
-
-    return repo_input
+from app.utils import normalize_repo_name
 
 
 def migrate_single_repo():

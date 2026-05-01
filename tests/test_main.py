@@ -1,4 +1,4 @@
-from app.main import normalize_repo_name
+from app.utils import normalize_repo_name
 
 
 def test_normalize_repo_name_with_url():
